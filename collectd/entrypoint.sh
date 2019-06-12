@@ -2,8 +2,6 @@
 
 set -e
 
-/opt/collectd_cuda.sh
-
 if [ -d /mnt/proc ]; then
   umount /proc
   mount -o bind /mnt/proc /proc

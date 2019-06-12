@@ -31,20 +31,6 @@ services:
     - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
     - ./influxdb/types.db:/usr/share/collectd/types.db:ro
 
-  collectd:
-    build:
-      context: ./collectd
-      dockerfile: Dockerfile.amd64
-    container_name: collectd
-    restart: always
-    depends_on:
-    - influxdb
-    privileged: true
-    network_mode: host
-    volumes:
-    - /proc:/mnt/proc:ro
-    - ./collectd/collectd.conf:/etc/collectd/collectd.conf
-
   grafana:
     image: grafana/grafana:6.1.3
     container_name: grafana
